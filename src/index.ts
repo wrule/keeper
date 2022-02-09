@@ -17,6 +17,8 @@ type IntervalType =
   '1w' |
   '1M';
 
+const DAY = 1000 * 60 * 60 * 24;
+
 export
 class Interval {
   public constructor(
@@ -28,12 +30,19 @@ class Interval {
   private milliseconds!: number;
 
   public distance(time: number = Number(new Date())) {
-    const remainder = time % this.milliseconds;
-    if (remainder < this.milliseconds / 2) {
-      return remainder;
-    } else {
-      return remainder - this.milliseconds;
+    if (this.milliseconds <= DAY * 3) {
+      let a = 0;
+      if (this.type === '3d') {
+        a += 2 * DAY;
+      }
+      const remainder = (time + a) % this.milliseconds;
+      if (remainder < this.milliseconds / 2) {
+        return remainder;
+      } else {
+        return remainder - this.milliseconds;
+      }
     }
+    return 0;
   }
 
   private getMilliseconds(interval: string) {
