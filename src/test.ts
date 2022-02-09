@@ -1,5 +1,7 @@
 
-console.log('你好，世界');
+import { Interval } from './index';
 
-const now = Number(new Date());
-console.log((((now + 1000 * 60 * 60 * 24 * 2) % (1000 * 60 * 60 * 24 * 3)) / (1000 * 60 * 60)));
+const i = new Interval('1m');
+setInterval(() => {
+  console.log(i.distance() / 1000);
+}, 1000);
