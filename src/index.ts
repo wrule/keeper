@@ -42,6 +42,9 @@ class Interval {
         return remainder - this.milliseconds;
       }
     }
+    if (this.type === '1w') {
+      
+    }
     return 0;
   }
 
