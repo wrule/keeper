@@ -1,9 +1,12 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { Interval } from './index';
+import fs from 'fs';
 
 // const i = new Interval('3d');
 // setInterval(() => {
 //   console.log(i.distance() / 1000 / 60 / 60);
 // }, 1000);
 
-console.log(moment().startOf('isoWeek').format('YYYY-MM-DD HH:mm:ss'));
+const m = moment('2022-02-06 20:00:00').tz('America/Los_Angeles');
+
+console.log(m.format('YYYY-MM-DD HH:mm:ss'));
